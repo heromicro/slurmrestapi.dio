@@ -2,19 +2,28 @@
 
 ```shell
 dependencies:
-  slurmrestapi: ‘0.0.37’
+  slurmrestapi:
+    git:
+      url: https://github.com/heromicro/slurmrestapi.dio.git
+      ref: v0.0.37
 ```
 
 ## v0.0.38
 
 ```shell
 dependencies:
-  slurmrestapi: ‘0.0.38’
+  slurmrestapi:
+    git:
+      url: https://github.com/heromicro/slurmrestapi.dio.git
+      ref: v0.0.38
 ```
 
 ## v0.0.39
 
 ```shell
 dependencies:
-  slurmrestapi: ‘0.0.39’
+  slurmrestapi:
+    git:
+      url: https://github.com/heromicro/slurmrestapi.dio.git
+      ref: v0.0.39
 ```
