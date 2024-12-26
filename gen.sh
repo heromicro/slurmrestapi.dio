@@ -1,2 +1,2 @@
 
-openapi-generator generate -i spec/openapi.v0.0.xx.json  -g dart-dio --package-name slurmrestapi -o ./
+openapi-generator generate -i spec/openapi.xxx.json  -g dart-dio --package-name slurmrestapi --additional-properties pubName=slurmrestapi,pubLibrary=slurmrestapi.api -o ./
