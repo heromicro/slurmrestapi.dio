@@ -1,0 +1,15 @@
+# slurmrestapi.model.V0040JobMcs
+
+## Load the model package
+```dart
+import 'package:slurmrestapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**label** | **String** | Multi-Category Security label on the job | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -1,0 +1,20 @@
+# slurmrestapi.model.V0039AcctGatherEnergy
+
+## Load the model package
+```dart
+import 'package:slurmrestapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**averageWatts** | **int** |  | [optional] 
+**baseConsumedEnergy** | **int** |  | [optional] 
+**consumedEnergy** | **int** |  | [optional] 
+**currentWatts** | [**V0039Uint32NoVal**](V0039Uint32NoVal.md) |  | [optional] 
+**previousConsumedEnergy** | **int** |  | [optional] 
+**lastCollected** | **int** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

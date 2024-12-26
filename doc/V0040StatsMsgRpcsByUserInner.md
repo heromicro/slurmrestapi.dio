@@ -1,0 +1,19 @@
+# slurmrestapi.model.V0040StatsMsgRpcsByUserInner
+
+## Load the model package
+```dart
+import 'package:slurmrestapi/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**user** | **String** | user name | [optional] 
+**userId** | **int** | user id (numeric) | [optional] 
+**count** | **int** | Number of RPCs received | [optional] 
+**averageTime** | **int** | Average time spent processing RPC in seconds | [optional] 
+**totalTime** | **int** | Total time spent processing RPC in seconds | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
