@@ -1,8 +1,8 @@
-# openapi.model.Dbv0039UpdateUsers
+# slurmrestapi.model.Dbv0039UpdateUsers
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

@@ -3,9 +3,9 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_stats_msg_rpcs_by_user_inner.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_stats_msg_rpcs_by_type_inner.dart';
+import 'package:slurmrestapi/src/model/v0039_stats_msg_rpcs_by_type_inner.dart';
+import 'package:slurmrestapi/src/model/v0039_stats_msg_rpcs_by_user_inner.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

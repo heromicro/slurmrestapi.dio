@@ -1,8 +1,8 @@
-# openapi.api.SlurmApi
+# slurmrestapi.api.SlurmApi
 
 ## Load the API package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 All URIs are relative to *http://localhost*
@@ -66,27 +66,24 @@ cancel or signal job
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String jobId = jobId_example; // String | Slurm Job ID
 final String signal = signal_example; // String | signal to send to job
 
 try {
     final response = api.slurmV0039CancelJob(jobId, signal);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039CancelJob: $e\n');
 }
 ```
@@ -120,26 +117,23 @@ delete node
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String nodeName = nodeName_example; // String | Slurm Node Name
 
 try {
     final response = api.slurmV0039DeleteNode(nodeName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039DeleteNode: $e\n');
 }
 ```
@@ -172,25 +166,22 @@ get diagnostics
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmV0039Diag();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039Diag: $e\n');
 }
 ```
@@ -220,26 +211,23 @@ get job info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String jobId = jobId_example; // String | Slurm JobID
 
 try {
     final response = api.slurmV0039GetJob(jobId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetJob: $e\n');
 }
 ```
@@ -272,26 +260,23 @@ get list of jobs
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final int updateTime = 789; // int | Filter if changed since update_time. Use of this parameter can result in faster replies.
 
 try {
     final response = api.slurmV0039GetJobs(updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetJobs: $e\n');
 }
 ```
@@ -324,26 +309,23 @@ get node info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String nodeName = nodeName_example; // String | Slurm Node Name
 
 try {
     final response = api.slurmV0039GetNode(nodeName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetNode: $e\n');
 }
 ```
@@ -376,26 +358,23 @@ get all node info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final int updateTime = 789; // int | Filter if changed since update_time. Use of this parameter can result in faster replies.
 
 try {
     final response = api.slurmV0039GetNodes(updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetNodes: $e\n');
 }
 ```
@@ -428,27 +407,24 @@ get partition info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String partitionName = partitionName_example; // String | Slurm Partition Name
 final int updateTime = 789; // int | Filter if there were no partition changes (not limited to partition in URL endpoint) since update_time.
 
 try {
     final response = api.slurmV0039GetPartition(partitionName, updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetPartition: $e\n');
 }
 ```
@@ -482,26 +458,23 @@ get all partition info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final int updateTime = 789; // int | Filter if changed since update_time. Use of this parameter can result in faster replies.
 
 try {
     final response = api.slurmV0039GetPartitions(updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetPartitions: $e\n');
 }
 ```
@@ -534,27 +507,24 @@ get reservation info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String reservationName = reservationName_example; // String | Slurm Reservation Name
 final int updateTime = 789; // int | Filter if no reservation (not limited to reservation in URL) changed since update_time.
 
 try {
     final response = api.slurmV0039GetReservation(reservationName, updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetReservation: $e\n');
 }
 ```
@@ -588,26 +558,23 @@ get all reservation info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final int updateTime = 789; // int | Filter if changed since update_time. Use of this parameter can result in faster replies.
 
 try {
     final response = api.slurmV0039GetReservations(updateTime);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039GetReservations: $e\n');
 }
 ```
@@ -640,25 +607,22 @@ ping test
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmV0039Ping();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039Ping: $e\n');
 }
 ```
@@ -688,25 +652,22 @@ get all Slurm tracked license info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmV0039SlurmctldGetLicenses();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039SlurmctldGetLicenses: $e\n');
 }
 ```
@@ -736,26 +697,23 @@ submit new job
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final V0039JobSubmission v0039JobSubmission = ; // V0039JobSubmission | submit new job
 
 try {
     final response = api.slurmV0039SubmitJob(v0039JobSubmission);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039SubmitJob: $e\n');
 }
 ```
@@ -788,27 +746,24 @@ update job
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String jobId = jobId_example; // String | Slurm Job ID
 final V0039JobDescMsg v0039JobDescMsg = ; // V0039JobDescMsg | update job
 
 try {
     final response = api.slurmV0039UpdateJob(jobId, v0039JobDescMsg);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039UpdateJob: $e\n');
 }
 ```
@@ -842,27 +797,24 @@ update node properties
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String nodeName = nodeName_example; // String | Slurm Node Name
 final V0039UpdateNodeMsg v0039UpdateNodeMsg = ; // V0039UpdateNodeMsg | update node
 
 try {
     final response = api.slurmV0039UpdateNode(nodeName, v0039UpdateNodeMsg);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmV0039UpdateNode: $e\n');
 }
 ```
@@ -896,26 +848,23 @@ Add clusters
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039ClustersInfo dbv0039ClustersInfo = ; // Dbv0039ClustersInfo | Add or update clusters
 
 try {
     final response = api.slurmdbV0039AddClusters(dbv0039ClustersInfo);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039AddClusters: $e\n');
 }
 ```
@@ -948,26 +897,23 @@ Add wckeys
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039WckeyInfo dbv0039WckeyInfo = ; // Dbv0039WckeyInfo | add wckeys
 
 try {
     final response = api.slurmdbV0039AddWckeys(dbv0039WckeyInfo);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039AddWckeys: $e\n');
 }
 ```
@@ -1000,26 +946,23 @@ Delete account
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String accountName = accountName_example; // String | Slurm Account Name
 
 try {
     final response = api.slurmdbV0039DeleteAccount(accountName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteAccount: $e\n');
 }
 ```
@@ -1052,20 +995,17 @@ Delete association
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String cluster = cluster_example; // String | Cluster name
 final String account = account_example; // String | Account name
 final String user = user_example; // String | User name
@@ -1074,7 +1014,7 @@ final String partition = partition_example; // String | Partition Name
 try {
     final response = api.slurmdbV0039DeleteAssociation(cluster, account, user, partition);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteAssociation: $e\n');
 }
 ```
@@ -1110,20 +1050,17 @@ Delete associations
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String cluster = cluster_example; // String | Cluster name
 final String account = account_example; // String | Account name
 final String user = user_example; // String | User name
@@ -1132,7 +1069,7 @@ final String partition = partition_example; // String | Partition Name
 try {
     final response = api.slurmdbV0039DeleteAssociations(cluster, account, user, partition);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteAssociations: $e\n');
 }
 ```
@@ -1168,26 +1105,23 @@ Delete cluster
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String clusterName = clusterName_example; // String | Slurm cluster name
 
 try {
     final response = api.slurmdbV0039DeleteCluster(clusterName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteCluster: $e\n');
 }
 ```
@@ -1220,26 +1154,23 @@ Delete QOS
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String qosName = qosName_example; // String | Slurm QOS Name
 
 try {
     final response = api.slurmdbV0039DeleteQos(qosName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteQos: $e\n');
 }
 ```
@@ -1272,26 +1203,23 @@ Delete user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String userName = userName_example; // String | Slurm User Name
 
 try {
     final response = api.slurmdbV0039DeleteUser(userName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteUser: $e\n');
 }
 ```
@@ -1324,26 +1252,23 @@ Delete wckey
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String wckey = wckey_example; // String | Slurm wckey name
 
 try {
     final response = api.slurmdbV0039DeleteWckey(wckey);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039DeleteWckey: $e\n');
 }
 ```
@@ -1376,25 +1301,22 @@ Get slurmdb diagnostics
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmdbV0039Diag();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039Diag: $e\n');
 }
 ```
@@ -1424,27 +1346,24 @@ Get account info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String accountName = accountName_example; // String | Slurm Account Name
 final String withDeleted = withDeleted_example; // String | Include deleted accounts. False by default.
 
 try {
     final response = api.slurmdbV0039GetAccount(accountName, withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetAccount: $e\n');
 }
 ```
@@ -1478,26 +1397,23 @@ Get account list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String withDeleted = withDeleted_example; // String | Include deleted accounts. False by default.
 
 try {
     final response = api.slurmdbV0039GetAccounts(withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetAccounts: $e\n');
 }
 ```
@@ -1530,20 +1446,17 @@ Get association info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String cluster = cluster_example; // String | Cluster name
 final String account = account_example; // String | Account name
 final String user = user_example; // String | User name
@@ -1552,7 +1465,7 @@ final String partition = partition_example; // String | Partition Name
 try {
     final response = api.slurmdbV0039GetAssociation(cluster, account, user, partition);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetAssociation: $e\n');
 }
 ```
@@ -1588,20 +1501,17 @@ Get association list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String cluster = cluster_example; // String | Cluster name
 final String account = account_example; // String | Account name
 final String user = user_example; // String | User name
@@ -1610,7 +1520,7 @@ final String partition = partition_example; // String | Partition Name
 try {
     final response = api.slurmdbV0039GetAssociations(cluster, account, user, partition);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetAssociations: $e\n');
 }
 ```
@@ -1646,26 +1556,23 @@ Get cluster info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String clusterName = clusterName_example; // String | Slurm cluster name
 
 try {
     final response = api.slurmdbV0039GetCluster(clusterName);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetCluster: $e\n');
 }
 ```
@@ -1698,25 +1605,22 @@ Get cluster list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmdbV0039GetClusters();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetClusters: $e\n');
 }
 ```
@@ -1746,25 +1650,22 @@ Dump all configuration information
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmdbV0039GetConfig();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetConfig: $e\n');
 }
 ```
@@ -1796,26 +1697,23 @@ This endpoint may return multiple job entries since job_id is not a unique key -
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String jobId = jobId_example; // String | Slurm JobID
 
 try {
     final response = api.slurmdbV0039GetJob(jobId);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetJob: $e\n');
 }
 ```
@@ -1848,20 +1746,17 @@ Get job list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String users = users_example; // String | Filter by comma delimited list of user names
 final String submitTime = submitTime_example; // String | Filter by submission time  Accepted formats:  HH:MM[:SS] [AM|PM]  MMDD[YY] or MM/DD[/YY] or MM.DD[.YY]  MM/DD[/YY]-HH:MM[:SS]  YYYY-MM-DD[THH:MM[:SS]]
 final String startTime = startTime_example; // String | Filter by start time  Accepted formats:  HH:MM[:SS] [AM|PM]  MMDD[YY] or MM/DD[/YY] or MM.DD[.YY]  MM/DD[/YY]-HH:MM[:SS]  YYYY-MM-DD[THH:MM[:SS]]
@@ -1892,7 +1787,7 @@ final String wckey = wckey_example; // String | Comma delimited list of wckeys t
 try {
     final response = api.slurmdbV0039GetJobs(users, submitTime, startTime, endTime, account, association, cluster, constraints, cpusMax, cpusMin, skipSteps, disableWaitForResult, exitCode, format, group, jobName, nodesMax, nodesMin, partition, qos, reason, reservation, state, step, node, wckey);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetJobs: $e\n');
 }
 ```
@@ -1950,26 +1845,23 @@ Get QOS list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String withDeleted = withDeleted_example; // String | Include deleted QOSs. False by default.
 
 try {
     final response = api.slurmdbV0039GetQos(withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetQos: $e\n');
 }
 ```
@@ -2002,27 +1894,24 @@ Get QOS info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String qosName = qosName_example; // String | Slurm QOS Name
 final String withDeleted = withDeleted_example; // String | Include deleted QOSs. False by default.
 
 try {
     final response = api.slurmdbV0039GetSingleQos(qosName, withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetSingleQos: $e\n');
 }
 ```
@@ -2056,25 +1945,22 @@ Get TRES info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmdbV0039GetTres();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetTres: $e\n');
 }
 ```
@@ -2104,27 +1990,24 @@ Get user info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String userName = userName_example; // String | Slurm User Name
 final String withDeleted = withDeleted_example; // String | Include deleted users. False by default.
 
 try {
     final response = api.slurmdbV0039GetUser(userName, withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetUser: $e\n');
 }
 ```
@@ -2158,26 +2041,23 @@ Get user list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String withDeleted = withDeleted_example; // String | Include deleted users. False by default.
 
 try {
     final response = api.slurmdbV0039GetUsers(withDeleted);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetUsers: $e\n');
 }
 ```
@@ -2210,26 +2090,23 @@ Get wckey info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final String wckey = wckey_example; // String | Slurm wckey name
 
 try {
     final response = api.slurmdbV0039GetWckey(wckey);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetWckey: $e\n');
 }
 ```
@@ -2262,25 +2139,22 @@ Get wckey list
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 
 try {
     final response = api.slurmdbV0039GetWckeys();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039GetWckeys: $e\n');
 }
 ```
@@ -2310,26 +2184,23 @@ Load all configuration information
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039SetConfig dbv0039SetConfig = ; // Dbv0039SetConfig | Add or update config
 
 try {
     final response = api.slurmdbV0039SetConfig(dbv0039SetConfig);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039SetConfig: $e\n');
 }
 ```
@@ -2362,26 +2233,23 @@ Update accounts
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039AccountInfo dbv0039AccountInfo = ; // Dbv0039AccountInfo | update/create accounts
 
 try {
     final response = api.slurmdbV0039UpdateAccounts(dbv0039AccountInfo);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039UpdateAccounts: $e\n');
 }
 ```
@@ -2414,26 +2282,23 @@ Set associations info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039AssociationsInfo dbv0039AssociationsInfo = ; // Dbv0039AssociationsInfo | Add or update associations
 
 try {
     final response = api.slurmdbV0039UpdateAssociations(dbv0039AssociationsInfo);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039UpdateAssociations: $e\n');
 }
 ```
@@ -2466,26 +2331,23 @@ Set QOS info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039UpdateQos dbv0039UpdateQos = ; // Dbv0039UpdateQos | Add or update QOSs
 
 try {
     final response = api.slurmdbV0039UpdateQos(dbv0039UpdateQos);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039UpdateQos: $e\n');
 }
 ```
@@ -2518,26 +2380,23 @@ Set TRES info
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039TresUpdate dbv0039TresUpdate = ; // Dbv0039TresUpdate | Add or Update TRES
 
 try {
     final response = api.slurmdbV0039UpdateTres(dbv0039TresUpdate);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039UpdateTres: $e\n');
 }
 ```
@@ -2570,26 +2429,23 @@ Update user
 
 ### Example
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 // TODO Configure API key authorization: user
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('user').apiKeyPrefix = 'Bearer';
-// TODO Configure HTTP basic authorization: bearerAuth
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').username = 'YOUR_USERNAME'
-//defaultApiClient.getAuthentication<HttpBasicAuth>('bearerAuth').password = 'YOUR_PASSWORD';
 // TODO Configure API key authorization: token
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('token').apiKeyPrefix = 'Bearer';
 
-final api = Openapi().getSlurmApi();
+final api = Slurmrestapi().getSlurmApi();
 final Dbv0039UpdateUsers dbv0039UpdateUsers = ; // Dbv0039UpdateUsers | add or update user
 
 try {
     final response = api.slurmdbV0039UpdateUsers(dbv0039UpdateUsers);
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling SlurmApi->slurmdbV0039UpdateUsers: $e\n');
 }
 ```

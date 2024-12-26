@@ -3,12 +3,12 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_power_mgmt_data.dart';
-import 'package:openapi/src/model/v0039_acct_gather_energy.dart';
-import 'package:openapi/src/model/v0039_ext_sensors_data.dart';
+import 'package:slurmrestapi/src/model/v0039_uint64_no_val.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_uint32_no_val.dart';
-import 'package:openapi/src/model/v0039_uint64_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_acct_gather_energy.dart';
+import 'package:slurmrestapi/src/model/v0039_power_mgmt_data.dart';
+import 'package:slurmrestapi/src/model/v0039_ext_sensors_data.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

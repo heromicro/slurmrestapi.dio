@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_stats_user.dart';
+import 'package:slurmrestapi/src/model/v0039_stats_user.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_stats_rpc.dart';
-import 'package:openapi/src/model/v0039_rollup_stats_inner.dart';
+import 'package:slurmrestapi/src/model/v0039_rollup_stats_inner.dart';
+import 'package:slurmrestapi/src/model/v0039_stats_rpc.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

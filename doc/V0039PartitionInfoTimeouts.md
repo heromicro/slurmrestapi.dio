@@ -1,8 +1,8 @@
-# openapi.model.V0039PartitionInfoTimeouts
+# slurmrestapi.model.V0039PartitionInfoTimeouts
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

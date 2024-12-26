@@ -1,8 +1,8 @@
-# openapi.model.V0039JobMcs
+# slurmrestapi.model.V0039JobMcs
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

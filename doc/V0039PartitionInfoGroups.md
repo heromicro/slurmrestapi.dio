@@ -1,8 +1,8 @@
-# openapi.model.V0039PartitionInfoGroups
+# slurmrestapi.model.V0039PartitionInfoGroups
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

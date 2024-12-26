@@ -3,11 +3,11 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:slurmrestapi/src/model/v0039_assoc_short.dart';
+import 'package:slurmrestapi/src/model/v0039_user_default.dart';
+import 'package:slurmrestapi/src/model/v0039_wckey.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_wckey.dart';
-import 'package:openapi/src/model/v0039_coord.dart';
-import 'package:openapi/src/model/v0039_user_default.dart';
-import 'package:openapi/src/model/v0039_assoc_short.dart';
+import 'package:slurmrestapi/src/model/v0039_coord.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

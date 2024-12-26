@@ -1,8 +1,8 @@
-# openapi.model.V0039ControllerPing
+# slurmrestapi.model.V0039ControllerPing
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

@@ -3,13 +3,13 @@
 //
 
 // ignore_for_file: unused_element
+import 'package:slurmrestapi/src/model/v0039_float64_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_uint64_no_val.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_uint16_no_val.dart';
-import 'package:openapi/src/model/v0039_job_info_power.dart';
-import 'package:openapi/src/model/v0039_float64_no_val.dart';
-import 'package:openapi/src/model/v0039_uint32_no_val.dart';
-import 'package:openapi/src/model/v0039_uint64_no_val.dart';
-import 'package:openapi/src/model/v0039_job_res.dart';
+import 'package:slurmrestapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_uint16_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_job_res.dart';
+import 'package:slurmrestapi/src/model/v0039_job_info_power.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

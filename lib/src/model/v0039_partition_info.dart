@@ -3,17 +3,17 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_partition_info_maximums.dart';
-import 'package:openapi/src/model/v0039_partition_info_minimums.dart';
-import 'package:openapi/src/model/v0039_partition_info_groups.dart';
-import 'package:openapi/src/model/v0039_partition_info_defaults.dart';
-import 'package:openapi/src/model/v0039_partition_info_timeouts.dart';
-import 'package:openapi/src/model/v0039_partition_info_nodes.dart';
-import 'package:openapi/src/model/v0039_partition_info_priority.dart';
-import 'package:openapi/src/model/v0039_partition_info_qos.dart';
-import 'package:openapi/src/model/v0039_partition_info_tres.dart';
-import 'package:openapi/src/model/v0039_partition_info_accounts.dart';
-import 'package:openapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_qos.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_defaults.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_maximums.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_minimums.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_timeouts.dart';
+import 'package:slurmrestapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_groups.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_nodes.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_accounts.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_priority.dart';
+import 'package:slurmrestapi/src/model/v0039_partition_info_tres.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

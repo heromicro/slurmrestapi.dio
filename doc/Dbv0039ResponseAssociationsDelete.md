@@ -1,8 +1,8 @@
-# openapi.model.Dbv0039ResponseAssociationsDelete
+# slurmrestapi.model.Dbv0039ResponseAssociationsDelete
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# openapi.model.V0039Assoc
+# slurmrestapi.model.V0039Assoc
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

@@ -3,21 +3,21 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_job_required.dart';
-import 'package:openapi/src/model/v0039_job_reservation.dart';
-import 'package:openapi/src/model/v0039_job_het.dart';
-import 'package:openapi/src/model/v0039_job_mcs.dart';
-import 'package:openapi/src/model/v0039_job_exit_code.dart';
-import 'package:openapi/src/model/v0039_job_tres.dart';
-import 'package:openapi/src/model/v0039_job_state.dart';
-import 'package:openapi/src/model/v0039_wckey_tag.dart';
+import 'package:slurmrestapi/src/model/v0039_job_array.dart';
+import 'package:slurmrestapi/src/model/v0039_job_time.dart';
+import 'package:slurmrestapi/src/model/v0039_job_comment.dart';
+import 'package:slurmrestapi/src/model/v0039_job_het.dart';
+import 'package:slurmrestapi/src/model/v0039_job_reservation.dart';
+import 'package:slurmrestapi/src/model/v0039_job_tres.dart';
+import 'package:slurmrestapi/src/model/v0039_job_mcs.dart';
+import 'package:slurmrestapi/src/model/v0039_assoc_short.dart';
+import 'package:slurmrestapi/src/model/v0039_job_required.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_job_time.dart';
-import 'package:openapi/src/model/v0039_step.dart';
-import 'package:openapi/src/model/v0039_assoc_short.dart';
-import 'package:openapi/src/model/v0039_job_comment.dart';
-import 'package:openapi/src/model/v0039_uint32_no_val.dart';
-import 'package:openapi/src/model/v0039_job_array.dart';
+import 'package:slurmrestapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_job_exit_code.dart';
+import 'package:slurmrestapi/src/model/v0039_job_state.dart';
+import 'package:slurmrestapi/src/model/v0039_wckey_tag.dart';
+import 'package:slurmrestapi/src/model/v0039_step.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

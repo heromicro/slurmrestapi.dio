@@ -1,8 +1,8 @@
-# openapi.model.Dbv0039Diag
+# slurmrestapi.model.Dbv0039Diag
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

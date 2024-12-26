@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_qos_limits_min_tres.dart';
+import 'package:slurmrestapi/src/model/v0039_qos_limits_min_tres.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

@@ -3,10 +3,10 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_reservation_info_purge_completed.dart';
+import 'package:slurmrestapi/src/model/v0039_reservation_core_spec.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_reservation_core_spec.dart';
-import 'package:openapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_uint32_no_val.dart';
+import 'package:slurmrestapi/src/model/v0039_reservation_info_purge_completed.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

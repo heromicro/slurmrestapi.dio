@@ -3,14 +3,14 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_qos.dart';
-import 'package:openapi/src/model/v0039_account.dart';
+import 'package:slurmrestapi/src/model/v0039_wckey.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:openapi/src/model/v0039_cluster_rec.dart';
-import 'package:openapi/src/model/v0039_wckey.dart';
-import 'package:openapi/src/model/v0039_tres.dart';
-import 'package:openapi/src/model/v0039_assoc.dart';
-import 'package:openapi/src/model/v0039_user.dart';
+import 'package:slurmrestapi/src/model/v0039_user.dart';
+import 'package:slurmrestapi/src/model/v0039_assoc.dart';
+import 'package:slurmrestapi/src/model/v0039_tres.dart';
+import 'package:slurmrestapi/src/model/v0039_account.dart';
+import 'package:slurmrestapi/src/model/v0039_cluster_rec.dart';
+import 'package:slurmrestapi/src/model/v0039_qos.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

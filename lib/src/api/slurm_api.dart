@@ -4,38 +4,39 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
-import 'package:openapi/src/api_util.dart';
-import 'package:openapi/src/model/dbv0039_account_info.dart';
-import 'package:openapi/src/model/dbv0039_associations_info.dart';
-import 'package:openapi/src/model/dbv0039_clusters_info.dart';
-import 'package:openapi/src/model/dbv0039_config_info.dart';
-import 'package:openapi/src/model/dbv0039_diag.dart';
-import 'package:openapi/src/model/dbv0039_job_info.dart';
-import 'package:openapi/src/model/dbv0039_qos_info.dart';
-import 'package:openapi/src/model/dbv0039_response_associations_delete.dart';
-import 'package:openapi/src/model/dbv0039_set_config.dart';
-import 'package:openapi/src/model/dbv0039_tres_info.dart';
-import 'package:openapi/src/model/dbv0039_tres_update.dart';
-import 'package:openapi/src/model/dbv0039_update_qos.dart';
-import 'package:openapi/src/model/dbv0039_update_users.dart';
-import 'package:openapi/src/model/dbv0039_user_info.dart';
-import 'package:openapi/src/model/dbv0039_wckey_info.dart';
-import 'package:openapi/src/model/status.dart';
-import 'package:openapi/src/model/v0039_diag.dart';
-import 'package:openapi/src/model/v0039_job_desc_msg.dart';
-import 'package:openapi/src/model/v0039_job_submission.dart';
-import 'package:openapi/src/model/v0039_job_submission_response.dart';
-import 'package:openapi/src/model/v0039_job_update_response.dart';
-import 'package:openapi/src/model/v0039_jobs_response.dart';
-import 'package:openapi/src/model/v0039_licenses_info.dart';
-import 'package:openapi/src/model/v0039_nodes_response.dart';
-import 'package:openapi/src/model/v0039_partitions_response.dart';
-import 'package:openapi/src/model/v0039_pings.dart';
-import 'package:openapi/src/model/v0039_reservations_response.dart';
-import 'package:openapi/src/model/v0039_update_node_msg.dart';
+import 'package:slurmrestapi/src/api_util.dart';
+import 'package:slurmrestapi/src/model/dbv0039_account_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_associations_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_clusters_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_config_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_diag.dart';
+import 'package:slurmrestapi/src/model/dbv0039_job_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_qos_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_response_associations_delete.dart';
+import 'package:slurmrestapi/src/model/dbv0039_set_config.dart';
+import 'package:slurmrestapi/src/model/dbv0039_tres_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_tres_update.dart';
+import 'package:slurmrestapi/src/model/dbv0039_update_qos.dart';
+import 'package:slurmrestapi/src/model/dbv0039_update_users.dart';
+import 'package:slurmrestapi/src/model/dbv0039_user_info.dart';
+import 'package:slurmrestapi/src/model/dbv0039_wckey_info.dart';
+import 'package:slurmrestapi/src/model/status.dart';
+import 'package:slurmrestapi/src/model/v0039_diag.dart';
+import 'package:slurmrestapi/src/model/v0039_job_desc_msg.dart';
+import 'package:slurmrestapi/src/model/v0039_job_submission.dart';
+import 'package:slurmrestapi/src/model/v0039_job_submission_response.dart';
+import 'package:slurmrestapi/src/model/v0039_job_update_response.dart';
+import 'package:slurmrestapi/src/model/v0039_jobs_response.dart';
+import 'package:slurmrestapi/src/model/v0039_licenses_info.dart';
+import 'package:slurmrestapi/src/model/v0039_nodes_response.dart';
+import 'package:slurmrestapi/src/model/v0039_partitions_response.dart';
+import 'package:slurmrestapi/src/model/v0039_pings.dart';
+import 'package:slurmrestapi/src/model/v0039_reservations_response.dart';
+import 'package:slurmrestapi/src/model/v0039_update_node_msg.dart';
 
 class SlurmApi {
 
@@ -59,7 +60,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmV0039CancelJob({ 
     required String jobId,
     String? signal,
@@ -70,7 +71,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', jobId.toString());
+    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', encodeQueryParameter(_serializers, jobId, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -122,10 +123,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -156,7 +157,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmV0039DeleteNode({ 
     required String nodeName,
     CancelToken? cancelToken,
@@ -166,7 +167,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', nodeName.toString());
+    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', encodeQueryParameter(_serializers, nodeName, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -213,10 +214,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -246,7 +247,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039Diag] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039Diag>> slurmV0039Diag({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -302,10 +303,10 @@ class SlurmApi {
       ) as V0039Diag;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -336,7 +337,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039JobsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039JobsResponse>> slurmV0039GetJob({ 
     required String jobId,
     CancelToken? cancelToken,
@@ -346,7 +347,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', jobId.toString());
+    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', encodeQueryParameter(_serializers, jobId, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -393,10 +394,10 @@ class SlurmApi {
       ) as V0039JobsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -427,7 +428,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039JobsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039JobsResponse>> slurmV0039GetJobs({ 
     int? updateTime,
     CancelToken? cancelToken,
@@ -489,10 +490,10 @@ class SlurmApi {
       ) as V0039JobsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -523,7 +524,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039NodesResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039NodesResponse>> slurmV0039GetNode({ 
     required String nodeName,
     CancelToken? cancelToken,
@@ -533,7 +534,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', nodeName.toString());
+    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', encodeQueryParameter(_serializers, nodeName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -580,10 +581,10 @@ class SlurmApi {
       ) as V0039NodesResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -614,7 +615,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039NodesResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039NodesResponse>> slurmV0039GetNodes({ 
     int? updateTime,
     CancelToken? cancelToken,
@@ -676,10 +677,10 @@ class SlurmApi {
       ) as V0039NodesResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -711,7 +712,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039PartitionsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039PartitionsResponse>> slurmV0039GetPartition({ 
     required String partitionName,
     int? updateTime,
@@ -722,7 +723,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/partition/{partition_name}'.replaceAll('{' r'partition_name' '}', partitionName.toString());
+    final _path = r'/slurm/v0.0.39/partition/{partition_name}'.replaceAll('{' r'partition_name' '}', encodeQueryParameter(_serializers, partitionName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -774,10 +775,10 @@ class SlurmApi {
       ) as V0039PartitionsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -808,7 +809,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039PartitionsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039PartitionsResponse>> slurmV0039GetPartitions({ 
     int? updateTime,
     CancelToken? cancelToken,
@@ -870,10 +871,10 @@ class SlurmApi {
       ) as V0039PartitionsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -905,7 +906,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039ReservationsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039ReservationsResponse>> slurmV0039GetReservation({ 
     required String reservationName,
     int? updateTime,
@@ -916,7 +917,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/reservation/{reservation_name}'.replaceAll('{' r'reservation_name' '}', reservationName.toString());
+    final _path = r'/slurm/v0.0.39/reservation/{reservation_name}'.replaceAll('{' r'reservation_name' '}', encodeQueryParameter(_serializers, reservationName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -968,10 +969,10 @@ class SlurmApi {
       ) as V0039ReservationsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1002,7 +1003,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039ReservationsResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039ReservationsResponse>> slurmV0039GetReservations({ 
     int? updateTime,
     CancelToken? cancelToken,
@@ -1064,10 +1065,10 @@ class SlurmApi {
       ) as V0039ReservationsResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1097,7 +1098,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039Pings] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039Pings>> slurmV0039Ping({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1153,10 +1154,10 @@ class SlurmApi {
       ) as V0039Pings;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1186,7 +1187,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039LicensesInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039LicensesInfo>> slurmV0039SlurmctldGetLicenses({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1242,10 +1243,10 @@ class SlurmApi {
       ) as V0039LicensesInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1276,7 +1277,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039JobSubmissionResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039JobSubmissionResponse>> slurmV0039SubmitJob({ 
     required V0039JobSubmission v0039JobSubmission,
     CancelToken? cancelToken,
@@ -1323,12 +1324,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(v0039JobSubmission, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1353,10 +1354,10 @@ class SlurmApi {
       ) as V0039JobSubmissionResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1388,7 +1389,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [V0039JobUpdateResponse] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<V0039JobUpdateResponse>> slurmV0039UpdateJob({ 
     required String jobId,
     required V0039JobDescMsg v0039JobDescMsg,
@@ -1399,7 +1400,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', jobId.toString());
+    final _path = r'/slurm/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', encodeQueryParameter(_serializers, jobId, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1436,12 +1437,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(v0039JobDescMsg, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1466,10 +1467,10 @@ class SlurmApi {
       ) as V0039JobUpdateResponse;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1501,7 +1502,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmV0039UpdateNode({ 
     required String nodeName,
     required V0039UpdateNodeMsg v0039UpdateNodeMsg,
@@ -1512,7 +1513,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', nodeName.toString());
+    final _path = r'/slurm/v0.0.39/node/{node_name}'.replaceAll('{' r'node_name' '}', encodeQueryParameter(_serializers, nodeName, const FullType(String)).toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1549,12 +1550,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(v0039UpdateNodeMsg, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1579,10 +1580,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1613,7 +1614,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039AddClusters({ 
     required Dbv0039ClustersInfo dbv0039ClustersInfo,
     CancelToken? cancelToken,
@@ -1660,12 +1661,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039ClustersInfo, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1690,10 +1691,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1724,7 +1725,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039AddWckeys({ 
     Dbv0039WckeyInfo? dbv0039WckeyInfo,
     CancelToken? cancelToken,
@@ -1771,12 +1772,12 @@ class SlurmApi {
       _bodyData = dbv0039WckeyInfo == null ? null : _serializers.serialize(dbv0039WckeyInfo, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1801,10 +1802,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1835,7 +1836,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039DeleteAccount({ 
     required String accountName,
     CancelToken? cancelToken,
@@ -1845,7 +1846,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/account/{account_name}'.replaceAll('{' r'account_name' '}', accountName.toString());
+    final _path = r'/slurmdb/v0.0.39/account/{account_name}'.replaceAll('{' r'account_name' '}', encodeQueryParameter(_serializers, accountName, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -1892,10 +1893,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -1929,7 +1930,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039ResponseAssociationsDelete] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039ResponseAssociationsDelete>> slurmdbV0039DeleteAssociation({ 
     String? cluster,
     String? account,
@@ -1997,10 +1998,10 @@ class SlurmApi {
       ) as Dbv0039ResponseAssociationsDelete;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2034,7 +2035,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039ResponseAssociationsDelete] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039ResponseAssociationsDelete>> slurmdbV0039DeleteAssociations({ 
     String? cluster,
     String? account,
@@ -2102,10 +2103,10 @@ class SlurmApi {
       ) as Dbv0039ResponseAssociationsDelete;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2136,7 +2137,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039DeleteCluster({ 
     required String clusterName,
     CancelToken? cancelToken,
@@ -2146,7 +2147,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/cluster/{cluster_name}'.replaceAll('{' r'cluster_name' '}', clusterName.toString());
+    final _path = r'/slurmdb/v0.0.39/cluster/{cluster_name}'.replaceAll('{' r'cluster_name' '}', encodeQueryParameter(_serializers, clusterName, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2193,10 +2194,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2227,7 +2228,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039DeleteQos({ 
     required String qosName,
     CancelToken? cancelToken,
@@ -2237,7 +2238,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/qos/{qos_name}'.replaceAll('{' r'qos_name' '}', qosName.toString());
+    final _path = r'/slurmdb/v0.0.39/qos/{qos_name}'.replaceAll('{' r'qos_name' '}', encodeQueryParameter(_serializers, qosName, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2284,10 +2285,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2318,7 +2319,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039DeleteUser({ 
     required String userName,
     CancelToken? cancelToken,
@@ -2328,7 +2329,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/user/{user_name}'.replaceAll('{' r'user_name' '}', userName.toString());
+    final _path = r'/slurmdb/v0.0.39/user/{user_name}'.replaceAll('{' r'user_name' '}', encodeQueryParameter(_serializers, userName, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2375,10 +2376,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2409,7 +2410,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039DeleteWckey({ 
     required String wckey,
     CancelToken? cancelToken,
@@ -2419,7 +2420,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/wckey/{wckey}'.replaceAll('{' r'wckey' '}', wckey.toString());
+    final _path = r'/slurmdb/v0.0.39/wckey/{wckey}'.replaceAll('{' r'wckey' '}', encodeQueryParameter(_serializers, wckey, const FullType(String)).toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -2466,10 +2467,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2499,7 +2500,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039Diag] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039Diag>> slurmdbV0039Diag({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -2555,10 +2556,10 @@ class SlurmApi {
       ) as Dbv0039Diag;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2590,7 +2591,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039AccountInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039AccountInfo>> slurmdbV0039GetAccount({ 
     required String accountName,
     String? withDeleted = 'false',
@@ -2601,7 +2602,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/account/{account_name}'.replaceAll('{' r'account_name' '}', accountName.toString());
+    final _path = r'/slurmdb/v0.0.39/account/{account_name}'.replaceAll('{' r'account_name' '}', encodeQueryParameter(_serializers, accountName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -2653,10 +2654,10 @@ class SlurmApi {
       ) as Dbv0039AccountInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2687,7 +2688,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039AccountInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039AccountInfo>> slurmdbV0039GetAccounts({ 
     String? withDeleted = 'false',
     CancelToken? cancelToken,
@@ -2749,10 +2750,10 @@ class SlurmApi {
       ) as Dbv0039AccountInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2786,7 +2787,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039AssociationsInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039AssociationsInfo>> slurmdbV0039GetAssociation({ 
     String? cluster,
     String? account,
@@ -2854,10 +2855,10 @@ class SlurmApi {
       ) as Dbv0039AssociationsInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2891,7 +2892,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039AssociationsInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039AssociationsInfo>> slurmdbV0039GetAssociations({ 
     String? cluster,
     String? account,
@@ -2959,10 +2960,10 @@ class SlurmApi {
       ) as Dbv0039AssociationsInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -2993,7 +2994,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039ClustersInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039ClustersInfo>> slurmdbV0039GetCluster({ 
     required String clusterName,
     CancelToken? cancelToken,
@@ -3003,7 +3004,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/cluster/{cluster_name}'.replaceAll('{' r'cluster_name' '}', clusterName.toString());
+    final _path = r'/slurmdb/v0.0.39/cluster/{cluster_name}'.replaceAll('{' r'cluster_name' '}', encodeQueryParameter(_serializers, clusterName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -3050,10 +3051,10 @@ class SlurmApi {
       ) as Dbv0039ClustersInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3083,7 +3084,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039ClustersInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039ClustersInfo>> slurmdbV0039GetClusters({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3139,10 +3140,10 @@ class SlurmApi {
       ) as Dbv0039ClustersInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3172,7 +3173,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039ConfigInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039ConfigInfo>> slurmdbV0039GetConfig({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3228,10 +3229,10 @@ class SlurmApi {
       ) as Dbv0039ConfigInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3262,7 +3263,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039JobInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039JobInfo>> slurmdbV0039GetJob({ 
     required String jobId,
     CancelToken? cancelToken,
@@ -3272,7 +3273,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', jobId.toString());
+    final _path = r'/slurmdb/v0.0.39/job/{job_id}'.replaceAll('{' r'job_id' '}', encodeQueryParameter(_serializers, jobId, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -3319,10 +3320,10 @@ class SlurmApi {
       ) as Dbv0039JobInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3378,7 +3379,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039JobInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039JobInfo>> slurmdbV0039GetJobs({ 
     String? users,
     String? submitTime,
@@ -3490,10 +3491,10 @@ class SlurmApi {
       ) as Dbv0039JobInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3524,7 +3525,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039QosInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039QosInfo>> slurmdbV0039GetQos({ 
     String? withDeleted = 'false',
     CancelToken? cancelToken,
@@ -3586,10 +3587,10 @@ class SlurmApi {
       ) as Dbv0039QosInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3621,7 +3622,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039QosInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039QosInfo>> slurmdbV0039GetSingleQos({ 
     required String qosName,
     String? withDeleted = 'false',
@@ -3632,7 +3633,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/qos/{qos_name}'.replaceAll('{' r'qos_name' '}', qosName.toString());
+    final _path = r'/slurmdb/v0.0.39/qos/{qos_name}'.replaceAll('{' r'qos_name' '}', encodeQueryParameter(_serializers, qosName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -3684,10 +3685,10 @@ class SlurmApi {
       ) as Dbv0039QosInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3717,7 +3718,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039TresInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039TresInfo>> slurmdbV0039GetTres({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -3773,10 +3774,10 @@ class SlurmApi {
       ) as Dbv0039TresInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3808,7 +3809,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039UserInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039UserInfo>> slurmdbV0039GetUser({ 
     required String userName,
     String? withDeleted = 'false',
@@ -3819,7 +3820,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/user/{user_name}'.replaceAll('{' r'user_name' '}', userName.toString());
+    final _path = r'/slurmdb/v0.0.39/user/{user_name}'.replaceAll('{' r'user_name' '}', encodeQueryParameter(_serializers, userName, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -3871,10 +3872,10 @@ class SlurmApi {
       ) as Dbv0039UserInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -3905,7 +3906,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039UserInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039UserInfo>> slurmdbV0039GetUsers({ 
     String? withDeleted = 'false',
     CancelToken? cancelToken,
@@ -3967,10 +3968,10 @@ class SlurmApi {
       ) as Dbv0039UserInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4001,7 +4002,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039WckeyInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039WckeyInfo>> slurmdbV0039GetWckey({ 
     required String wckey,
     CancelToken? cancelToken,
@@ -4011,7 +4012,7 @@ class SlurmApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/slurmdb/v0.0.39/wckey/{wckey}'.replaceAll('{' r'wckey' '}', wckey.toString());
+    final _path = r'/slurmdb/v0.0.39/wckey/{wckey}'.replaceAll('{' r'wckey' '}', encodeQueryParameter(_serializers, wckey, const FullType(String)).toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -4058,10 +4059,10 @@ class SlurmApi {
       ) as Dbv0039WckeyInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4091,7 +4092,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Dbv0039WckeyInfo] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Dbv0039WckeyInfo>> slurmdbV0039GetWckeys({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -4147,10 +4148,10 @@ class SlurmApi {
       ) as Dbv0039WckeyInfo;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4181,7 +4182,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039SetConfig({ 
     Dbv0039SetConfig? dbv0039SetConfig,
     CancelToken? cancelToken,
@@ -4228,12 +4229,12 @@ class SlurmApi {
       _bodyData = dbv0039SetConfig == null ? null : _serializers.serialize(dbv0039SetConfig, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4258,10 +4259,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4292,7 +4293,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039UpdateAccounts({ 
     required Dbv0039AccountInfo dbv0039AccountInfo,
     CancelToken? cancelToken,
@@ -4339,12 +4340,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039AccountInfo, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4369,10 +4370,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4403,7 +4404,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039UpdateAssociations({ 
     required Dbv0039AssociationsInfo dbv0039AssociationsInfo,
     CancelToken? cancelToken,
@@ -4450,12 +4451,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039AssociationsInfo, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4480,10 +4481,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4514,7 +4515,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039UpdateQos({ 
     required Dbv0039UpdateQos dbv0039UpdateQos,
     CancelToken? cancelToken,
@@ -4561,12 +4562,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039UpdateQos, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4591,10 +4592,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4625,7 +4626,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039UpdateTres({ 
     required Dbv0039TresUpdate dbv0039TresUpdate,
     CancelToken? cancelToken,
@@ -4672,12 +4673,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039TresUpdate, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4702,10 +4703,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4736,7 +4737,7 @@ class SlurmApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future] containing a [Response] with a [Status] as data
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<Status>> slurmdbV0039UpdateUsers({ 
     required Dbv0039UpdateUsers dbv0039UpdateUsers,
     CancelToken? cancelToken,
@@ -4783,12 +4784,12 @@ class SlurmApi {
       _bodyData = _serializers.serialize(dbv0039UpdateUsers, specifiedType: _type);
 
     } catch(error, stackTrace) {
-      throw DioError(
+      throw DioException(
          requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );
@@ -4813,10 +4814,10 @@ class SlurmApi {
       ) as Status;
 
     } catch (error, stackTrace) {
-      throw DioError(
+      throw DioException(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.unknown,
+        type: DioExceptionType.unknown,
         error: error,
         stackTrace: stackTrace,
       );

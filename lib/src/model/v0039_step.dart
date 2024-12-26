@@ -3,15 +3,15 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:openapi/src/model/v0039_step_tres.dart';
-import 'package:openapi/src/model/v0039_job_exit_code.dart';
-import 'package:openapi/src/model/v0039_step_statistics.dart';
-import 'package:openapi/src/model/v0039_step_tasks.dart';
-import 'package:openapi/src/model/v0039_step_time.dart';
-import 'package:openapi/src/model/v0039_job_reservation.dart';
-import 'package:openapi/src/model/v0039_step_task.dart';
-import 'package:openapi/src/model/v0039_step_cpu.dart';
-import 'package:openapi/src/model/v0039_step_nodes.dart';
+import 'package:slurmrestapi/src/model/v0039_step_cpu.dart';
+import 'package:slurmrestapi/src/model/v0039_step_nodes.dart';
+import 'package:slurmrestapi/src/model/v0039_step_tasks.dart';
+import 'package:slurmrestapi/src/model/v0039_step_task.dart';
+import 'package:slurmrestapi/src/model/v0039_step_time.dart';
+import 'package:slurmrestapi/src/model/v0039_job_reservation.dart';
+import 'package:slurmrestapi/src/model/v0039_job_exit_code.dart';
+import 'package:slurmrestapi/src/model/v0039_step_tres.dart';
+import 'package:slurmrestapi/src/model/v0039_step_statistics.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 

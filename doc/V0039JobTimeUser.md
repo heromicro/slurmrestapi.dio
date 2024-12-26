@@ -1,8 +1,8 @@
-# openapi.model.V0039JobTimeUser
+# slurmrestapi.model.V0039JobTimeUser
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:slurmrestapi/api.dart';
 ```
 
 ## Properties

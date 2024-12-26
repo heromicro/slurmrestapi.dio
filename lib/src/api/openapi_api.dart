@@ -4,6 +4,7 @@
 
 import 'dart:async';
 
+import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 
@@ -28,7 +29,7 @@ class OpenapiApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> openapiGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -89,7 +90,7 @@ class OpenapiApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> openapiJsonGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -150,7 +151,7 @@ class OpenapiApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> openapiV3Get({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -211,7 +212,7 @@ class OpenapiApi {
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
   /// Returns a [Future]
-  /// Throws [DioError] if API call or serialization fails
+  /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> openapiYamlGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

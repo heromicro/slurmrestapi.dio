@@ -3,7 +3,7 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:openapi/src/auth/auth.dart';
+import 'package:slurmrestapi/src/auth/auth.dart';
 
 class BearerAuthInterceptor extends AuthInterceptor {
   final Map<String, String> tokens = {};
@@ -13,7 +13,7 @@ class BearerAuthInterceptor extends AuthInterceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) {
-    final authInfo = getAuthInfo(options, (secure) => secure['type'] == 'http' && secure['scheme'] == 'bearer');
+    final authInfo = getAuthInfo(options, (secure) => secure['type'] == 'http' && secure['scheme']?.toLowerCase() == 'bearer');
     for (final info in authInfo) {
       final token = tokens[info['name']];
       if (token != null) {

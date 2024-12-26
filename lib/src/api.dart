@@ -4,21 +4,21 @@
 
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
-import 'package:openapi/src/serializers.dart';
-import 'package:openapi/src/auth/api_key_auth.dart';
-import 'package:openapi/src/auth/basic_auth.dart';
-import 'package:openapi/src/auth/bearer_auth.dart';
-import 'package:openapi/src/auth/oauth.dart';
-import 'package:openapi/src/api/openapi_api.dart';
-import 'package:openapi/src/api/slurm_api.dart';
+import 'package:slurmrestapi/src/serializers.dart';
+import 'package:slurmrestapi/src/auth/api_key_auth.dart';
+import 'package:slurmrestapi/src/auth/basic_auth.dart';
+import 'package:slurmrestapi/src/auth/bearer_auth.dart';
+import 'package:slurmrestapi/src/auth/oauth.dart';
+import 'package:slurmrestapi/src/api/openapi_api.dart';
+import 'package:slurmrestapi/src/api/slurm_api.dart';
 
-class Openapi {
+class Slurmrestapi {
   static const String basePath = r'http://localhost';
 
   final Dio dio;
   final Serializers serializers;
 
-  Openapi({
+  Slurmrestapi({
     Dio? dio,
     Serializers? serializers,
     String? basePathOverride,
